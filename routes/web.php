@@ -26,6 +26,8 @@ Route::match(['get', 'post'], '/adminLogin', 'AdminController@login')->name('adm
 
 Route::group(['middleware' => 'auth'], function(){
   Route::get('/admin/dashboard', 'AdminController@dashboard')->name('admin.dashboard');
+  Route::get('/admin/profile/{id}', 'AdminController@profile')->name('profile');
+  Route::post('/admin/profile/update/{id}', 'AdminController@update_profile')->name('update.profile');
 });
 
 

@@ -14,6 +14,8 @@
     <link href="{{asset('public/adminpanel/assets/libs/morris.js/morris.css')}}" rel="stylesheet">
     <!-- Custom CSS -->
     <link href="{{asset('public/adminpanel/dist/css/style.min.css')}}" rel="stylesheet">
+
+    <link rel="stylesheet" type="text/css" href="{{asset('public/adminpanel/assets/libs/summernote/dist/summernote-bs4.css')}}">
     <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
     <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
     <!--[if lt IE 9]>
