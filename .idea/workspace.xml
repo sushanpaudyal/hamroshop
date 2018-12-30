@@ -2,7 +2,7 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="aa7e7417-577e-41d0-8337-b16cf4e31d3e" name="Default" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
+      <change beforePath="$PROJECT_DIR$/resources/views/admin/adminLayouts/includes/sidebar.blade.php" afterPath="$PROJECT_DIR$/resources/views/admin/adminLayouts/includes/sidebar.blade.php" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="TRACKING_ENABLED" value="true" />
@@ -16,12 +16,19 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file leaf-file-name="2018_12_30_053319_create_categories_table.php" pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/database/migrations/2018_12_30_053319_create_categories_table.php">
+      <file leaf-file-name="sidebar.blade.php" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/resources/views/admin/adminLayouts/includes/sidebar.blade.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="270">
-              <caret line="20" column="40" lean-forward="false" selection-start-line="20" selection-start-column="40" selection-end-line="20" selection-end-column="40" />
-              <folding />
+            <state relative-caret-position="292">
+              <caret line="65" column="60" lean-forward="false" selection-start-line="65" selection-start-column="60" selection-end-line="65" selection-end-column="60" />
+              <folding>
+                <marker date="1546148841985" expanded="true" signature="539:603" ph="..." />
+                <marker date="1546148841985" expanded="true" signature="825:844" ph="..." />
+                <marker date="1546148841985" expanded="true" signature="1201:1222" ph="..." />
+                <marker date="1546148841985" expanded="true" signature="1529:1564" ph="..." />
+                <marker date="1546148841985" expanded="true" signature="2379:2400" ph="..." />
+                <marker date="1546148841985" expanded="true" signature="2824:2848" ph="..." />
+              </folding>
             </state>
           </provider>
         </entry>
@@ -44,12 +51,12 @@
         <option value="$PROJECT_DIR$/database/migrations/2018_12_28_053843_add_phone_column_to_users_table.php" />
         <option value="$PROJECT_DIR$/routes/web.php" />
         <option value="$PROJECT_DIR$/app/Http/Controllers/AdminController.php" />
-        <option value="$PROJECT_DIR$/resources/views/admin/adminLayouts/includes/sidebar.blade.php" />
         <option value="$PROJECT_DIR$/resources/views/admin/adminLayouts/admin_design.blade.php" />
         <option value="$PROJECT_DIR$/resources/views/admin/adminLayouts/includes/head.blade.php" />
         <option value="$PROJECT_DIR$/resources/views/admin/adminLayouts/includes/scripts.blade.php" />
         <option value="$PROJECT_DIR$/resources/views/admin/admin_profile.blade.php" />
         <option value="$PROJECT_DIR$/database/migrations/2018_12_30_053319_create_categories_table.php" />
+        <option value="$PROJECT_DIR$/resources/views/admin/adminLayouts/includes/sidebar.blade.php" />
       </list>
     </option>
   </component>
@@ -185,17 +192,6 @@
             <path>
               <item name="hamroshop" type="b2602c69:ProjectViewProjectNode" />
               <item name="hamroshop" type="2a2b976b:PhpTreeStructureProvider$1" />
-              <item name="database" type="2a2b976b:PhpTreeStructureProvider$1" />
-            </path>
-            <path>
-              <item name="hamroshop" type="b2602c69:ProjectViewProjectNode" />
-              <item name="hamroshop" type="2a2b976b:PhpTreeStructureProvider$1" />
-              <item name="database" type="2a2b976b:PhpTreeStructureProvider$1" />
-              <item name="migrations" type="2a2b976b:PhpTreeStructureProvider$1" />
-            </path>
-            <path>
-              <item name="hamroshop" type="b2602c69:ProjectViewProjectNode" />
-              <item name="hamroshop" type="2a2b976b:PhpTreeStructureProvider$1" />
               <item name="public" type="2a2b976b:PhpTreeStructureProvider$1" />
             </path>
             <path>
@@ -288,12 +284,12 @@
       <workItem from="1545814638120" duration="8000" />
       <workItem from="1545925712791" duration="12000" />
       <workItem from="1545974654218" duration="2642000" />
-      <workItem from="1546147750836" duration="225000" />
+      <workItem from="1546147750836" duration="838000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="10448000" />
+    <option name="totallyTimeSpent" value="11061000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="1440" y="0" width="800" height="600" extended-state="0" />
@@ -360,11 +356,12 @@
         <state relative-caret-position="210">
           <caret line="14" column="38" lean-forward="true" selection-start-line="14" selection-start-column="38" selection-end-line="14" selection-end-column="106" />
           <folding>
-            <marker date="1545977190436" expanded="true" signature="539:603" ph="..." />
-            <marker date="1545977190436" expanded="true" signature="825:844" ph="..." />
-            <marker date="1545977190436" expanded="true" signature="1201:1222" ph="..." />
-            <marker date="1545977190436" expanded="true" signature="1529:1564" ph="..." />
-            <marker date="1545977190436" expanded="true" signature="2379:2400" ph="..." />
+            <marker date="1546148841985" expanded="true" signature="539:603" ph="..." />
+            <marker date="1546148841985" expanded="true" signature="825:844" ph="..." />
+            <marker date="1546148841985" expanded="true" signature="1201:1222" ph="..." />
+            <marker date="1546148841985" expanded="true" signature="1529:1564" ph="..." />
+            <marker date="1546148841985" expanded="true" signature="2379:2400" ph="..." />
+            <marker date="1546148841985" expanded="true" signature="2824:2848" ph="..." />
           </folding>
         </state>
       </provider>
@@ -818,20 +815,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/resources/views/admin/adminLayouts/includes/sidebar.blade.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="210">
-          <caret line="14" column="38" lean-forward="false" selection-start-line="14" selection-start-column="38" selection-end-line="14" selection-end-column="106" />
-          <folding>
-            <marker date="1545977190436" expanded="true" signature="539:603" ph="..." />
-            <marker date="1545977190436" expanded="true" signature="825:844" ph="..." />
-            <marker date="1545977190436" expanded="true" signature="1201:1222" ph="..." />
-            <marker date="1545977190436" expanded="true" signature="1529:1564" ph="..." />
-            <marker date="1545977190436" expanded="true" signature="2379:2400" ph="..." />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/resources/views/admin/adminLayouts/admin_design.blade.php">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="1515">
@@ -933,6 +916,21 @@
         <state relative-caret-position="270">
           <caret line="20" column="40" lean-forward="false" selection-start-line="20" selection-start-column="40" selection-end-line="20" selection-end-column="40" />
           <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/resources/views/admin/adminLayouts/includes/sidebar.blade.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="292">
+          <caret line="65" column="60" lean-forward="false" selection-start-line="65" selection-start-column="60" selection-end-line="65" selection-end-column="60" />
+          <folding>
+            <marker date="1546148841985" expanded="true" signature="539:603" ph="..." />
+            <marker date="1546148841985" expanded="true" signature="825:844" ph="..." />
+            <marker date="1546148841985" expanded="true" signature="1201:1222" ph="..." />
+            <marker date="1546148841985" expanded="true" signature="1529:1564" ph="..." />
+            <marker date="1546148841985" expanded="true" signature="2379:2400" ph="..." />
+            <marker date="1546148841985" expanded="true" signature="2824:2848" ph="..." />
+          </folding>
         </state>
       </provider>
     </entry>
