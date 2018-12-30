@@ -28,6 +28,10 @@ Route::group(['middleware' => 'auth'], function(){
   Route::get('/admin/dashboard', 'AdminController@dashboard')->name('admin.dashboard');
   Route::get('/admin/profile/{id}', 'AdminController@profile')->name('profile');
   Route::post('/admin/profile/update/{id}', 'AdminController@update_profile')->name('update.profile');
+
+//   Catgeory Routes
+
+  Route::get('/admin/create/category', 'CategoryController@create')->name('category.create');
 });
 
 
