@@ -31,7 +31,7 @@ Route::group(['middleware' => 'auth'], function(){
 
 //   Catgeory Routes
 
-  Route::get('/admin/create/category', 'CategoryController@create')->name('category.create');
+   Route::match(['get', 'post'], '/admin/addCategory', 'CategoryController@addCategory')->name('category.add');
 });
 
 

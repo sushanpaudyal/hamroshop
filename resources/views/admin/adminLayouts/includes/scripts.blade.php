@@ -73,3 +73,5 @@
         airMode: true
     });
 </script>
+
+@yield('script')
