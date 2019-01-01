@@ -75,11 +75,11 @@
                                                  <td>{{$category->name}}</td>
                                                  <td>
                                                      @if($category->parent_id == 0)
-                                                         <span class="m--font-bold m--font-brand">{{ 'Main Category' }}</span>
+                                                         <span class="badge badge-warning">{{ 'Main Category' }}</span>
                                                      @endif
                                                      @foreach($categories as $c)
                                                          @if($c->id == $category->parent_id)
-                                                             <span class="m--font-bold m--font-info">{{ $c->name }}</span>
+                                                             <span class="badge badge-primary">{{ $c->name }}</span>
                                                          @endif
                                                      @endforeach
                                                  </td>
