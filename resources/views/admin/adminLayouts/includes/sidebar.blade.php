@@ -61,7 +61,7 @@
                             </a>
                         </li>
                         <li class="sidebar-item">
-                            <a href="index2.html" class="sidebar-link">
+                            <a href="{{route('categories.view')}}" class="sidebar-link">
                                 <i class="icon-Record"></i>
                                 <span class="hide-menu">View</span>
                             </a>

@@ -46,6 +46,9 @@
                                  <label for="parent_id">Category Level</label>
                                  <select class="form-control" name="parent_id">
                                    <option value="0">Main Category</option>
+                                     @foreach($levels as $val)
+                                         <option value="{{$val->id}}">{{$val->name}}</option>
+                                         @endforeach
                                  </select>
                                </div>
 
@@ -71,6 +74,9 @@
 
 
     @section('script')
+
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-validate/1.16.0/jquery.validate.js?fbclid=IwAR1RjITeTwmkv0NszrXT4kZGopGY0gYIwkjQLvDvAh1kw4tBD4JdJFHpgl8">
 
     </script>
        <script type="text/javascript">

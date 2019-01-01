@@ -32,6 +32,9 @@ Route::group(['middleware' => 'auth'], function(){
 //   Catgeory Routes
 
    Route::match(['get', 'post'], '/admin/addCategory', 'CategoryController@addCategory')->name('category.add');
+   Route::get('/admin/view-categories', 'CategoryController@viewCategories')->name('categories.view');
+   Route::match(['get', 'post'], '/admin/edit-category/{id}', 'CategoryController@editCategory')->name('category.edit');
+   Route::match(['get', 'post'], '/admin/delete-category/{id}', 'CategoryController@deleteCategory')->name('category.delete');
 });
 
 
