@@ -40,7 +40,7 @@
                 <div class="card">
                     <div class="card-body">
                         <h4 class="card-title">Add Products Details</h4>
-                        <form class="m-t-30" method="post" action="" id="add_product">
+                        <form class="m-t-30" method="post" action="{{route('product.add')}}" id="add_product" enctype="multipart/form-data">
                             @csrf
                             <div class="form-group">
                                 <label for="parent_id">Category</label>
