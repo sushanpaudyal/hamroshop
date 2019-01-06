@@ -81,7 +81,7 @@
                                     <td>{{$product->product_code}}</td>
                                     <td>{{$product->price}}</td>
                                     <td>
-                                        <a href="" class="btn btn-primary btn-mini">
+                                        <a href="{{route('product.edit', $product->id)}}" class="btn btn-primary btn-mini">
                                             <i class="fa fa-edit"></i>
                                         </a>
                                         <a href="" class="btn btn-primary btn-danger">

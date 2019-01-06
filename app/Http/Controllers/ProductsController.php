@@ -70,4 +70,28 @@ class ProductsController extends Controller
         return view('admin.products.view_products', compact('products'));
     }
 
+    public function editProduct(Request $request, $id = null){
+        $productDetails = Product::where(['id' => $id])->first();
+        $categories = Category::where(['parent_id' => 0])->get();
+        $categories_dropdown = "<option value='' selected disabled>  Select </option>";
+        foreach($categories as $cat){
+            if($cat->id == $productDetails->category_id){
+                $selected = "selected";
+            } else {
+                $selected = "";
+            }
+            $categories_dropdown .= "<option value='".$cat->id."' ".$selected.">" . $cat->name . " </option>";
+            $sub_categories = Category::where(['parent_id' => $cat->id])->get();
+            foreach($sub_categories as $sub_cat){
+                if($sub_cat->id == $productDetails->category_id){
+                    $selected = "selected";
+                } else {
+                    $selected = "";
+                }
+                $categories_dropdown .= "<option value='".$sub_cat->id."' ".$selected."> &nbsp; --- &nbsp;" . $sub_cat->name . "</option>";
+            }
+        }
+        return view ('admin.products.edit_product', compact('productDetails', 'categories_dropdown'));
+    }
+
 }
