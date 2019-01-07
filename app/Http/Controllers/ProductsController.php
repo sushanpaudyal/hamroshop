@@ -71,6 +71,36 @@ class ProductsController extends Controller
     }
 
     public function editProduct(Request $request, $id = null){
+
+        if($request->isMethod('post')){
+
+            $data = $request->all();
+            if($request->hasFile('image')){
+                $image_tmp = Input::file('image');
+                if($image_tmp->isValid()){
+                    $extension = $image_tmp->getClientOriginalExtension();
+                    $filename = rand(111,99999).'.'.$extension;
+                    $large_image_path = 'public/adminpanel/uploads/products/large/'. $filename;
+                    $medium_image_path = 'public/adminpanel/uploads/products/medium/'. $filename;
+                    $small_image_path = 'public/adminpanel/uploads/products/small/'. $filename;
+                    // Resize Image Code
+                    Image::make($image_tmp)->save($large_image_path);
+                    Image::make($image_tmp)->resize(600,600)->save($medium_image_path);
+                    Image::make($image_tmp)->resize(300,300)->save($small_image_path);
+                }
+            } else {
+                $filename = $data['current_image'];
+            }
+            if(empty($data['description'])){
+                $data['description'] = "";
+            }
+            Product::where(['id' => $id])->update(['category_id' => $data['category_id'], 'product_name' => $data['product_name'], 'product_code' => $data['product_code'], 'product_color' => $data['product_color'] , 'description' => $data['description'], 'price' => $data['price'], 'image' => $filename
+                ]);
+            return redirect()->back()->with('flash_message_success', 'Product Has been updated successfully');
+        }
+
+
+
         $productDetails = Product::where(['id' => $id])->first();
         $categories = Category::where(['parent_id' => 0])->get();
         $categories_dropdown = "<option value='' selected disabled>  Select </option>";
@@ -92,6 +122,17 @@ class ProductsController extends Controller
             }
         }
         return view ('admin.products.edit_product', compact('productDetails', 'categories_dropdown'));
+    }
+
+
+    public function deleteProductImage($id){
+        Product::where(['id' => $id])->update(['image' => ""]);
+        return redirect()->back()->with('flash_message_success', 'Product Image Deleted Successfully');
+    }
+
+    public function deleteProduct($id = null){
+        Product::where(['id' => $id])->delete();
+        return redirect()->back()->with('flash_message_success', 'Product Has Been Deleted');
     }
 
 }

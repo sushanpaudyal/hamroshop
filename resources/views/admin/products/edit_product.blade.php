@@ -40,7 +40,13 @@
                 <div class="card">
                     <div class="card-body">
                         <h4 class="card-title">Add Products Details</h4>
-                        <form class="m-t-30" method="post" action="{{route('product.add')}}" id="add_product" enctype="multipart/form-data">
+                        @if(Session::has('flash_message_success'))
+                            <div class="alert alert-success alert-block">
+                                <button type="button" class="close" data-dismiss="alert">x</button>
+                                <strong>{!! session('flash_message_success') !!}</strong>
+                            </div>
+                        @endif
+                        <form class="m-t-30" method="post" action="{{route('product.edit',$productDetails->id)}}" id="edit_product" enctype="multipart/form-data">
                             @csrf
                             <div class="form-group">
                                 <label for="parent_id">Category</label>
@@ -72,6 +78,15 @@
                             <div class="form-group">
                                 <label for="image">Product Image</label>
                                 <input type="file" class="form-control" id="image" name="image">
+                                <input type="hidden" name="current_image" value="{{$productDetails->image}}">
+
+                                @if(!empty($productDetails->image))
+
+                                <img src="{{asset('public/adminpanel/uploads/products/small/'.$productDetails->image)}}" alt="">
+                                <hr>
+                                <a href="{{route('delete.image', $productDetails->id)}}">Delete</a>
+
+                                    @endif
                             </div>
 
                             <div class="form-group">

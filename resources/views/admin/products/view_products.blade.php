@@ -84,7 +84,7 @@
                                         <a href="{{route('product.edit', $product->id)}}" class="btn btn-primary btn-mini">
                                             <i class="fa fa-edit"></i>
                                         </a>
-                                        <a href="" class="btn btn-primary btn-danger">
+                                        <a  rel="{{$product->id}}" rel1="delete-product" href="javascript:" class="btn btn-danger deleteRecord">
                                             <i class="fa fa-trash"></i>
                                         </a>
                                         <a data-toggle="modal" data-target="#myModal{{$product->id}}" class="model_img img-fluid btn btn-success">
@@ -142,18 +142,32 @@
 
 @section('css')
     <link href="{{asset('public/adminpanel/assets/libs/datatables.net-bs4/css/dataTables.bootstrap4.css')}}" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/sweetalert/1.1.3/sweetalert.css">
 @endsection
 
 @section('script')
     <script src="{{asset('public/adminpanel/assets/extra-libs/DataTables/datatables.min.js')}}"></script>
     <script src="{{asset('public/adminpanel/dist/js/pages/datatable/datatable-basic.init.js')}}"></script>
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/sweetalert/1.1.3/sweetalert.min.js">
+    </script>
+
     <script>
         $(document).ready(function () {
-            $("#delCat").click(function(){
-                if(confirm('Are You Sure, You Want To Delete This Category')){
-                    return true;
-                }
-                return false;
+            $(".deleteRecord").click(function(){
+                var id = $(this).attr('rel');
+                var deleteFunction = $(this).attr('rel1');
+                swal({
+                        title: "Are You Sure",
+                        text: "You will not be able to recover this record again",
+                        type: "warning",
+                        showCancelButton: true,
+                        confirmButtonClass: "btn-danger",
+                        confirmButtonText: "Yes, Delete it!"
+                    },
+                    function(){
+                        window.location.href="/hamroshop/admin/"+deleteFunction+"/"+id;
+                    }
+                );
             });
         });
     </script>

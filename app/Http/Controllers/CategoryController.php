@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Product;
 use Illuminate\Http\Request;
 use App\Category;
 
@@ -13,7 +14,12 @@ class CategoryController extends Controller
 
         $category = new Category;
         $category->name = ucwords(strtolower($data['name']));
-        $category->description = $data['description'];
+
+        if($category->description == NULL){
+            $category->description = "NULL";
+        } else {
+            $category->description = $data['description'];
+        }
         $category->slug = str_slug($data['name']);
         $category->parent_id = $data['parent_id'];
         $category->save();
@@ -46,4 +52,6 @@ class CategoryController extends Controller
            return redirect()->route('categories.view')->with('flash_message_warning', 'Catgeory Deleted');
         }
     }
+
+
 }
