@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Category;
 use App\Product;
+use App\ProductsAttribute;
 use Illuminate\Support\Facades\Input;
 use Illuminate\Http\Request;
 use Session;
@@ -133,6 +134,28 @@ class ProductsController extends Controller
     public function deleteProduct($id = null){
         Product::where(['id' => $id])->delete();
         return redirect()->back()->with('flash_message_success', 'Product Has Been Deleted');
+    }
+
+
+    public function addAttributes(Request $request, $id = null){
+        $productDetails = Product::where(['id' => $id])->first();
+        if($request->isMethod('post')){
+            $data = $request->all();
+//            echo "<pre>";  print_r($data); die;
+            foreach($data['sku'] as $key => $val){
+                if(!empty($val)){
+                    $attribute = new ProductsAttribute;
+                    $attribute->product_id = $id;
+                    $attribute->sku = $val;
+                    $attribute->size = $data['size'][$key];
+                    $attribute->price = $data['price'][$key];
+                    $attribute->stock = $data['stock'][$key];
+                    $attribute->save();
+                }
+            }
+            return redirect()->back()->with('flash_message_success', 'Attribute Added Successfully');
+        }
+        return view ('admin.products.add_attributes', compact('productDetails'));
     }
 
 }

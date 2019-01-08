@@ -90,6 +90,9 @@
                                         <a data-toggle="modal" data-target="#myModal{{$product->id}}" class="model_img img-fluid btn btn-success">
                                             <i class="fa fa-eye"></i>
                                         </a>
+                                        <a href="{{route('attribute.add', $product->id)}}" class="btn btn-warning" title="Add Attribute">
+                                            <i class="fa fa-plus"></i>
+                                        </a>
                                     </td>
                                     </tr>
 
