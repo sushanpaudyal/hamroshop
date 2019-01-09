@@ -138,7 +138,7 @@ class ProductsController extends Controller
 
 
     public function addAttributes(Request $request, $id = null){
-        $productDetails = Product::where(['id' => $id])->first();
+        $productDetails = Product::with('attributes')->where(['id' => $id])->first();
         if($request->isMethod('post')){
             $data = $request->all();
 //            echo "<pre>";  print_r($data); die;
@@ -156,6 +156,11 @@ class ProductsController extends Controller
             return redirect()->back()->with('flash_message_success', 'Attribute Added Successfully');
         }
         return view ('admin.products.add_attributes', compact('productDetails'));
+    }
+
+    public function deleteAttribute($id){
+        ProductsAttribute::where(['id' => $id])->delete();
+        return redirect()->back()->with('flash_message_success', 'Attribute Deleted Successfully');
     }
 
 }
