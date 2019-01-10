@@ -163,4 +163,15 @@ class ProductsController extends Controller
         return redirect()->back()->with('flash_message_success', 'Attribute Deleted Successfully');
     }
 
+
+    public function products($slug = null){
+//        Get all the categories and sub categories
+        $categories = Category::with('categories')->where(['parent_id' => 0])->get();
+
+
+        $categoriesDetails = Category::where(['slug' => $slug])->first();
+        $productsAll = Product::where(['category_id' => $categoriesDetails->id])->get();
+        return view ('products.listing', compact('categoriesDetails', 'productsAll', 'categories'));
+    }
+
 }

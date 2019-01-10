@@ -17,6 +17,8 @@ Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');
 
+Route::get('/products/{slug}', 'ProductsController@products')->name('product.category');
+
 
 
 //Route::get('/adminLogin', 'AdminController@login')->name('admin.login');
