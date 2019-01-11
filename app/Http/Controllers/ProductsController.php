@@ -167,10 +167,20 @@ class ProductsController extends Controller
     public function products($slug = null){
 //        Get all the categories and sub categories
         $categories = Category::with('categories')->where(['parent_id' => 0])->get();
-
-
         $categoriesDetails = Category::where(['slug' => $slug])->first();
-        $productsAll = Product::where(['category_id' => $categoriesDetails->id])->get();
+
+        if($categoriesDetails->parent_id == 0){
+//            if slug is main category
+            $subCategories = Category::where(['parent_id' => $categoriesDetails->id])->get();
+            foreach($subCategories as $key => $subcat){
+                    $cat_ids[] = $subcat->id;
+                }
+            $productsAll = Product::whereIn('category_id', $cat_ids)->get();
+        } else {
+//            if slug is subcategory
+            $productsAll = Product::where(['category_id' => $categoriesDetails->id])->get();
+        }
+
         return view ('products.listing', compact('categoriesDetails', 'productsAll', 'categories'));
     }
 
