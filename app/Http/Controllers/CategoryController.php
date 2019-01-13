@@ -20,8 +20,17 @@ class CategoryController extends Controller
         } else {
             $category->description = $data['description'];
         }
+
+
+        if(empty($data['status'])){
+            $status = 0;
+        } else {
+            $status = 1;
+        }
+
         $category->slug = str_slug($data['name']);
         $category->parent_id = $data['parent_id'];
+        $category->status = $status;
         $category->save();
         return redirect()->route('categories.view')->with('flash_message_success', 'Category Inserted Successfully');
       }
