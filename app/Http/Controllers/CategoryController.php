@@ -47,7 +47,12 @@ class CategoryController extends Controller
     public function editCategory(Request $request, $id){
         if($request->isMethod('post')){
             $data = $request->all();
-            Category::where(['id' => $id])->update(['name' => $data['name'], 'parent_id' => $data['parent_id'] , 'description' => $data['description'], 'slug' => str_slug($data['name'])
+            if(empty($data['status'])){
+                $status = 0;
+            } else {
+                $status = 1;
+            }
+            Category::where(['id' => $id])->update(['name' => $data['name'], 'parent_id' => $data['parent_id'] , 'description' => $data['description'], 'slug' => str_slug($data['name']) , 'status' => $status
             ]);
             return redirect()->route('categories.view')->with('flash_message_success', 'Category Updated');
         }

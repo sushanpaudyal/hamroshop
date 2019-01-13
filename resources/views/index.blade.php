@@ -74,6 +74,7 @@
                         <h2>Category</h2>
                         <div class="panel-group category-products" id="accordian"><!--category-productsr-->
 @foreach($categories as $cat)
+     @if($cat->status == 1)
                             <div class="panel panel-default">
                                 <div class="panel-heading">
                                     <h4 class="panel-title">
@@ -87,12 +88,15 @@
                                     <div class="panel-body">
                                         <ul>
                                             @foreach($cat->categories as $subcat)
+                                                @if($subcat->status === 1)
                                             <li><a href="{{route('product.category', $subcat->slug)}}">{{$subcat->name}}</a></li>
+                                                @endif
                                                 @endforeach
                                         </ul>
                                     </div>
                                 </div>
                             </div>
+                                @endif
                             @endforeach
 
 
