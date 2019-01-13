@@ -15,11 +15,11 @@ class CategoryController extends Controller
         $category = new Category;
         $category->name = ucwords(strtolower($data['name']));
 
-        if($category->description == NULL){
-            $category->description = "NULL";
-        } else {
-            $category->description = $data['description'];
-        }
+       if(empty($data['description'])){
+           $description = "NULL";
+       } else {
+           $description = $data['description'];
+       }
 
 
         if(empty($data['status'])){
@@ -30,6 +30,7 @@ class CategoryController extends Controller
 
         $category->slug = str_slug($data['name']);
         $category->parent_id = $data['parent_id'];
+        $category->description = $description;
         $category->status = $status;
         $category->save();
         return redirect()->route('categories.view')->with('flash_message_success', 'Category Inserted Successfully');
