@@ -94,15 +94,7 @@
                                     </div>
                                 </div>
                             @endforeach
-
-
                         </div><!--/category-products-->
-
-
-
-
-
-
                     </div>
                 </div>
 
@@ -123,7 +115,7 @@
                                             <div class="overlay-content">
                                                 <h2>Rs. {{$product->price}}</h2>
                                                 <p>{{$product->product_name}}</p>
-                                                <a href="#" class="btn btn-default add-to-cart"><i class="fa fa-shopping-cart"></i>Add to cart</a>
+                                                <a href="{{route('product.detail', $product->id)}}" class="btn btn-default add-to-cart"><i class="fa fa-shopping-cart"></i>Add to cart</a>
                                             </div>
                                         </div>
                                     </div>
