@@ -78,6 +78,15 @@
                                 <h2>{{$productDetails->product_name}}</h2>
                                 <p>Code: {{$productDetails->product_code}}</p>
                                 <img src="images/product-details/rating.png" alt="" />
+
+                                <p>
+                                    <select name="size" id="selSize" style="width: 150px;">
+                                        <option value=""  selected disabled >Select Size</option>
+                                        @foreach($productDetails->attributes as $size)
+                                            <option value="{{$size->size}}">{{$size->size}}</option>
+                                            @endforeach
+                                    </select>
+                                </p>
                                 <span>
 									<span>Rs. {{$productDetails->price}}</span>
 									<label>Quantity:</label>
