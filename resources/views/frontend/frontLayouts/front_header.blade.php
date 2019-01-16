@@ -10,6 +10,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="description" content="">
     <meta name="author" content="">
+    <meta name="csrf-token" content="{{ csrf_token() }}">
+
     <title>Hamro Shop -  J Kunni Cha Hami Chau</title>
     <link href="{{asset('public/frontpanel/css/bootstrap.min.css')}}" rel="stylesheet">
     <link href="{{asset('public/frontpanel/css/font-awesome.min.css')}}" rel="stylesheet">

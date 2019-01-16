@@ -21,6 +21,8 @@ Route::get('/products/{slug}', 'ProductsController@products')->name('product.cat
 
 Route::get('/product/{id}', 'ProductsController@product')->name('product.detail');
 
+Route::post('product/get-product-price', 'ProductsController@getProductPrice');
+
 
 
 //Route::get('/adminLogin', 'AdminController@login')->name('admin.login');
