@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Category;
 use App\Product;
 use App\ProductsAttribute;
+use App\ProductsImage;
 use Illuminate\Support\Facades\Input;
 use Illuminate\Http\Request;
 use Session;
@@ -259,5 +260,38 @@ class ProductsController extends Controller
         $proArr = explode("-", $data['idSize']);
         $proAttr = ProductsAttribute::where(['product_id' => $proArr[0], 'size' => $proArr[1]])->first();
         echo $proAttr->price;
+    }
+
+
+
+    public function addImages(Request $request, $id = null){
+        $productDetails = Product::with('attributes')->where(['id' => $id])->first();
+
+        if($request->isMethod('post')){
+            $data = $request->all();
+            if($request->hasFile('image')){
+                $files = $request->file('image');
+                foreach($files as $file){
+                    $image = new ProductsImage;
+                    $extension = $file->getClientOriginalExtension();
+                    $filename = rand(29999,989768).'.'.$extension;
+
+                    $large_image_path = 'public/adminpanel/uploads/products/large/'. $filename;
+                    $medium_image_path = 'public/adminpanel/uploads/products/medium/'. $filename;
+                    $small_image_path = 'public/adminpanel/uploads/products/small/'. $filename;
+                    // Resize Image Code
+                    Image::make($file)->save($large_image_path);
+                    Image::make($file)->resize(600,600)->save($medium_image_path);
+                    Image::make($file)->resize(300,300)->save($small_image_path);
+
+                    $image->image = $filename;
+                    $image->product_id = $data['product_id'];
+                    $image->save();
+                }
+            }
+            return redirect()->back()->with('flash_message_success', 'Product Images Has Been Added');
+        }
+
+        return view ('admin.products.add_images', compact('productDetails'));
     }
 }
