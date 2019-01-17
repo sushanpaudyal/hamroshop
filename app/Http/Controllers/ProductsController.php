@@ -28,6 +28,16 @@ class ProductsController extends Controller
             } else {
                 $product->description = '';
             }
+
+            if(!empty($data['care'])){
+                $product->care = $data['care'];
+            } else {
+                $product->care = '';
+            }
+
+
+
+
             $product->price = $data['price'];
 
             if($request->hasFile('image')){
@@ -95,7 +105,13 @@ class ProductsController extends Controller
             if(empty($data['description'])){
                 $data['description'] = "";
             }
-            Product::where(['id' => $id])->update(['category_id' => $data['category_id'], 'product_name' => $data['product_name'], 'product_code' => $data['product_code'], 'product_color' => $data['product_color'] , 'description' => $data['description'], 'price' => $data['price'], 'image' => $filename
+
+
+            if(empty($data['care'])){
+                $data['care'] = "";
+            }
+
+            Product::where(['id' => $id])->update(['category_id' => $data['category_id'], 'product_name' => $data['product_name'], 'product_code' => $data['product_code'], 'product_color' => $data['product_color'] , 'description' => $data['description'], 'price' => $data['price'], 'image' => $filename, 'care' => $data['care']
                 ]);
             return redirect()->back()->with('flash_message_success', 'Product Has been updated successfully');
         }

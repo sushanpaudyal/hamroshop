@@ -79,6 +79,11 @@
                                 <textarea name="description" rows="8" class="form-control summernote" id="description"></textarea>
                             </div>
 
+                            <div class="form-group">
+                                <label for="description">Care</label>
+                                <textarea name="care" rows="8" class="form-control summernote" id="care"></textarea>
+                            </div>
+
                             <button type="submit" class="btn btn-primary">Submit</button>
                         </form>
                     </div>

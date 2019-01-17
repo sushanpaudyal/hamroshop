@@ -96,6 +96,13 @@
                                 </textarea>
                             </div>
 
+                            <div class="form-group">
+                                <label for="description">Care</label>
+                                <textarea name="care" rows="8" class="form-control summernote" id="care">
+                                    {{$productDetails->care}}
+                                </textarea>
+                            </div>
+
                             <button type="submit" class="btn btn-primary">Update</button>
                         </form>
                     </div>
