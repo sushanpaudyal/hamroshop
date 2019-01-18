@@ -252,7 +252,9 @@ class ProductsController extends Controller
     public function product($id = null){
         $productDetails = Product::with('attributes')->where(['id' => $id])->first();
         $categories = Category::with('categories')->where(['parent_id' => 0])->get();
-        return view ('products.detail', compact('productDetails', 'categories'));
+
+        $productAltImages = ProductsImage::where(['product_id' => $id])->get();
+        return view ('products.detail', compact('productDetails', 'categories', 'productAltImages'));
     }
 
     public function getProductPrice(Request $request){
@@ -292,6 +294,32 @@ class ProductsController extends Controller
             return redirect()->back()->with('flash_message_success', 'Product Images Has Been Added');
         }
 
-        return view ('admin.products.add_images', compact('productDetails'));
+        $productsImages = ProductsImage::where(['product_id' => $id])->get();
+
+        return view ('admin.products.add_images', compact('productDetails', 'productsImages'));
+    }
+
+
+    public function deleteAltImage($id){
+        $productImage = ProductsImage::where(['id' => $id])->first();
+
+        $large_image_path = 'public/adminpanel/uploads/products/large/';
+        $medium_image_path = 'public/adminpanel/uploads/products/medium/';
+        $small_image_path = 'public/adminpanel/uploads/products/small/';
+
+        if(file_exists($large_image_path.$productImage->image)){
+            unlink($large_image_path.$productImage->image);
+        }
+        if(file_exists($medium_image_path.$productImage->image)){
+            unlink($medium_image_path.$productImage->image);
+        }
+        if(file_exists($small_image_path.$productImage->image)){
+            unlink($small_image_path.$productImage->image);
+        }
+
+        ProductsImage::where(['id' => $id])->delete();
+
+        return redirect()->back()->with('flash_message_success', 'Image Deleted');
+
     }
 }

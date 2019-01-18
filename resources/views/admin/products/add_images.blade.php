@@ -57,8 +57,69 @@
             </div>
         </div>
 
+
+
+
+        <div class="row">
+            <div class="col-12">
+                <div class="card">
+                    <div class="card-body">
+                        <h4 class="card-title">Product Details</h4>
+
+                        @if(Session::has('flash_message_success'))
+                            <div class="alert alert-success alert-block">
+                                <button type="button" class="close" data-dismiss="alert">x</button>
+                                <strong>{!! session('flash_message_success') !!}</strong>
+                            </div>
+                        @endif
+
+                        @if(Session::has('flash_message_warning'))
+                            <div class="alert alert-warning alert-block">
+                                <button type="button" class="close" data-dismiss="alert">x</button>
+                                <strong>{!! session('flash_message_warning') !!}</strong>
+                            </div>
+                        @endif
+
+
+                        <div class="table-responsive">
+                            <table id="zero_config" class="table table-striped table-bordered">
+                                <thead>
+                                <tr>
+                                    <th>#</th>
+                                    <th>Product Image</th>
+                                    <th>Actions</th>
+                                </tr>
+                                </thead>
+                                <tbody>
+                                @foreach($productsImages as $image)
+                                    <tr>
+                                        <td>{{$image->id}}</td>
+                                        <td>
+                                            <img src="{{asset('public/adminpanel/uploads/products/small/'.$image->image)}}" width="100px;">
+                                        </td>
+                                        <td>
+                                            <a href="javascript:" rel="{{$image->id}}" rel1="delete-alt-image" class="btn btn-danger deleteRecord">
+                                                Delete
+                                            </a>
+                                        </td>
+                                    </tr>
+                                    @endforeach
+                                </tbody>
+
+                            </table>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
     </div>
 
+@endsection
+
+@section('css')
+    <link href="{{asset('public/adminpanel/assets/libs/datatables.net-bs4/css/dataTables.bootstrap4.css')}}" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/sweetalert/1.1.3/sweetalert.css">
 @endsection
 
 
@@ -88,5 +149,30 @@
             });
         });
 
+    </script>
+
+
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/sweetalert/1.1.3/sweetalert.min.js">
+    </script>
+
+    <script>
+        $(document).ready(function () {
+            $(".deleteRecord").click(function(){
+                var id = $(this).attr('rel');
+                var deleteFunction = $(this).attr('rel1');
+                swal({
+                        title: "Are You Sure",
+                        text: "You will not be able to recover this record again",
+                        type: "warning",
+                        showCancelButton: true,
+                        confirmButtonClass: "btn-danger",
+                        confirmButtonText: "Yes, Delete it!"
+                    },
+                    function(){
+                        window.location.href="/hamroshop/admin/"+deleteFunction+"/"+id;
+                    }
+                );
+            });
+        });
     </script>
 @endsection
