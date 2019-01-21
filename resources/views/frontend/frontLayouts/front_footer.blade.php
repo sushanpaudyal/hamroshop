@@ -167,6 +167,7 @@
 <script src="{{asset('public/frontpanel/js/jquery.scrollUp.min.js')}}"></script>
 <script src="{{asset('public/frontpanel/js/price-range.js')}}"></script>
 <script src="{{asset('public/frontpanel/js/jquery.prettyPhoto.js')}}"></script>
+<script src="{{asset('public/frontpanel/js/easyzoom.js')}}"></script>
 <script src="{{asset('public/frontpanel/js/main.js')}}"></script>
 
 

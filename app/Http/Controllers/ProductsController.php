@@ -322,4 +322,15 @@ class ProductsController extends Controller
         return redirect()->back()->with('flash_message_success', 'Image Deleted');
 
     }
+
+
+    public function editAttribute(Request $request, $id = null){
+        if($request->isMethod('post')){
+            $data = $request->all();
+            foreach($data['idAttr'] as $key => $attr){
+                ProductsAttribute::where(['id' => $data['idAttr'][$key]])->update(['price' => $data['price'][$key], 'stock' => $data['stock'][$key]]);
+                return redirect()->back()->with('flash_message_success', 'Products Attributes Updated Successfully');
+            }
+        }
+    }
 }
