@@ -112,7 +112,7 @@
 
 
                         <div class="table-responsive">
-                            <form action="{{route('edit.attribute', $productDetails->id)}}" method="post">
+                            <form action="{{url('/admin/edit-attribute/'.$productDetails->id)}}" method="post">
                                @csrf
                             <table id="zero_config" class="table table-striped table-bordered">
                                 <thead>

@@ -254,7 +254,9 @@ class ProductsController extends Controller
         $categories = Category::with('categories')->where(['parent_id' => 0])->get();
 
         $productAltImages = ProductsImage::where(['product_id' => $id])->get();
-        return view ('products.detail', compact('productDetails', 'categories', 'productAltImages'));
+
+        $total_stock = ProductsAttribute::where('product_id', $id)->sum('stock');
+        return view ('products.detail', compact('productDetails', 'categories', 'productAltImages', 'total_stock'));
     }
 
     public function getProductPrice(Request $request){
@@ -329,8 +331,9 @@ class ProductsController extends Controller
             $data = $request->all();
             foreach($data['idAttr'] as $key => $attr){
                 ProductsAttribute::where(['id' => $data['idAttr'][$key]])->update(['price' => $data['price'][$key], 'stock' => $data['stock'][$key]]);
-                return redirect()->back()->with('flash_message_success', 'Products Attributes Updated Successfully');
             }
+            return redirect()->back()->with('flash_message_success', 'Products Attributes Updated Successfully');
+
         }
     }
 }
