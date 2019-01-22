@@ -103,6 +103,11 @@
                                 </textarea>
                             </div>
 
+                            <div class="form-group">
+                                <label>Status Enable</label>
+                                <input type="checkbox" name="status" id="status" value="1" @if($productDetails->status == "1") checked @endif>
+                            </div>
+
                             <button type="submit" class="btn btn-primary">Update</button>
                         </form>
                     </div>

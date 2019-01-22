@@ -36,6 +36,12 @@ class ProductsController extends Controller
                 $product->care = '';
             }
 
+            if(empty($data['status'])){
+                $product->status = 0;
+            } else {
+                $product->status = 1;
+            }
+
 
 
 
@@ -112,7 +118,13 @@ class ProductsController extends Controller
                 $data['care'] = "";
             }
 
-            Product::where(['id' => $id])->update(['category_id' => $data['category_id'], 'product_name' => $data['product_name'], 'product_code' => $data['product_code'], 'product_color' => $data['product_color'] , 'description' => $data['description'], 'price' => $data['price'], 'image' => $filename, 'care' => $data['care']
+            if(empty($data['status'])){
+                $data['status'] = 0;
+            } else {
+                $data['status'] = 1;
+            }
+
+            Product::where(['id' => $id])->update(['category_id' => $data['category_id'], 'product_name' => $data['product_name'], 'product_code' => $data['product_code'], 'product_color' => $data['product_color'] , 'description' => $data['description'], 'price' => $data['price'], 'image' => $filename, 'care' => $data['care'], 'status' => $data['status']
                 ]);
             return redirect()->back()->with('flash_message_success', 'Product Has been updated successfully');
         }
@@ -242,7 +254,7 @@ class ProductsController extends Controller
             $productsAll = Product::whereIn('category_id', $cat_ids)->get();
         } else {
 //            if slug is subcategory
-            $productsAll = Product::where(['category_id' => $categoriesDetails->id])->get();
+            $productsAll = Product::where(['category_id' => $categoriesDetails->id, 'status' => 1])->get();
         }
 
         return view ('products.listing', compact('categoriesDetails', 'productsAll', 'categories'));

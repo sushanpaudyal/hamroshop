@@ -84,6 +84,11 @@
                                 <textarea name="care" rows="8" class="form-control summernote" id="care"></textarea>
                             </div>
 
+                            <div class="form-group">
+                                <label>Status Enable</label>
+                                <input type="checkbox" name="status" id="status" value="1">
+                            </div>
+
                             <button type="submit" class="btn btn-primary">Submit</button>
                         </form>
                     </div>

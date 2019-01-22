@@ -119,7 +119,7 @@
                             <div class="carousel-inner">
                                 <?php $count = 1 ; ?>
                                 @foreach($relatedProducts->chunk(3) as $chunk)
-                                <div class="item active">
+                                <div <?php if($count == 1) {  ?>class="item active" <?php } else { ?> class="item" <?php } ?> >
                                     @foreach($chunk as $item)
                                     <div class="col-sm-4">
                                         <div class="product-image-wrapper">
