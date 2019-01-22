@@ -60,13 +60,13 @@
 									<label>Quantity:</label>
 									<input type="text" value="1" />
                                     @if($total_stock > 0)
-									<button type="button" class="btn btn-fefault cart">
+									<button type="button" class="btn btn-fefault cart" id="cartButton">
 										<i class="fa fa-shopping-cart"></i>
 										Add to cart
 									</button>
                                         @endif
 								</span>
-                                <p><b>Availability:</b> @if($total_stock > 0)  In Stock @else Out of Stock @endif</p>
+                                <p><b>Availability:</b> <span id="availability">@if($total_stock > 0)  In Stock @else Out of Stock @endif</span></p>
                             </div><!--/product-information-->
                         </div>
                     </div><!--/product-details-->
