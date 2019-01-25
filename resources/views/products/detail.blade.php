@@ -41,7 +41,19 @@
 
                         </div>
                         <div class="col-sm-7">
-                            <div class="product-information"><!--/product-information-->
+
+                            <form action="{{route('addtocart')}}" method="post" name="addtoCart" id="addtoCart">
+                                @csrf
+
+                                <input type="hidden" name="product_id" value="{{$productDetails->id}}">
+                                <input type="hidden" name="product_name" value="{{$productDetails->product_name}}">
+                                <input type="hidden" name="product_code" value="{{$productDetails->product_code}}">
+                                <input type="hidden" name="product_color" value="{{$productDetails->product_color}}">
+                                <input type="hidden" name="price" id="price" value="{{$productDetails->price}}">
+
+
+
+                                <div class="product-information"><!--/product-information-->
                                 <img src="images/product-details/new.jpg" class="newarrival" alt="" />
                                 <h2>{{$productDetails->product_name}}</h2>
                                 <p>Code: {{$productDetails->product_code}}</p>
@@ -58,9 +70,9 @@
                                 <span>
 									<span id="getPrice">Rs. {{$productDetails->price}}</span>
 									<label>Quantity:</label>
-									<input type="text" value="1" />
+									<input type="text" value="1" name="quantity"/>
                                     @if($total_stock > 0)
-									<button type="button" class="btn btn-fefault cart" id="cartButton">
+									<button type="submit" class="btn btn-fefault cart" id="cartButton">
 										<i class="fa fa-shopping-cart"></i>
 										Add to cart
 									</button>
@@ -68,6 +80,8 @@
 								</span>
                                 <p><b>Availability:</b> <span id="availability">@if($total_stock > 0)  In Stock @else Out of Stock @endif</span></p>
                             </div><!--/product-information-->
+
+                            </form>
                         </div>
                     </div><!--/product-details-->
 
