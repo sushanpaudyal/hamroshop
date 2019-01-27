@@ -398,4 +398,10 @@ class ProductsController extends Controller
         return redirect()->back()->with('flash_message_success', 'Cart Item Has Been Removed');
     }
 
+    public function updateCartQuantity($id, $quantity){
+        DB::table('carts')->where('id', $id)->increment('quantity', $quantity);
+        return redirect()->back()->with('flash_message_success', 'Product Quantity Has Been Updated');
+
+    }
+
 }
