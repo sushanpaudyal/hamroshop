@@ -34,6 +34,7 @@
                     </tr>
                     </thead>
                     <tbody>
+                    <?php $total_amount = 0; ?>
                     @foreach($userCart as $cart)
                     <tr>
                         <td class="cart_product">
@@ -62,7 +63,9 @@
                             <a class="cart_quantity_delete" href="{{route('cart.delete', $cart->id)}}"><i class="fa fa-times"></i></a>
                         </td>
                     </tr>
-                        @endforeach
+                    <?php $total_amount = $total_amount + ($cart->price * $cart->quantity); ?>
+
+                    @endforeach
 
                     </tbody>
                 </table>
@@ -134,10 +137,7 @@
                 <div class="col-sm-6">
                     <div class="total_area">
                         <ul>
-                            <li>Cart Sub Total <span>$59</span></li>
-                            <li>Eco Tax <span>$2</span></li>
-                            <li>Shipping Cost <span>Free</span></li>
-                            <li>Total <span>$61</span></li>
+                            <li>Total <span>Rs. <?php echo $total_amount; ?></span></li>
                         </ul>
                         <a class="btn btn-default update" href="">Update</a>
                         <a class="btn btn-default check_out" href="">Check Out</a>
