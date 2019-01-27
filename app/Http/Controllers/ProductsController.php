@@ -379,7 +379,11 @@ class ProductsController extends Controller
         if($countProducts > 0){
             return redirect()->route('cart')->with('flash_message_success', 'Product Already Exists in The Cart Table');
         } else {
-            DB::table('carts')->insert(['product_id' => $data['product_id'] , 'product_name' => $data['product_name'] , 'product_code' => $data['product_code'], 'product_color' => $data['product_color'], 'price' => $data['price'], 'size' => $sizeArr[1], 'quantity' => $data['quantity'], 'user_email' => $data['user_email'], 'session_id' => $session_id
+
+            $getSKU = ProductsAttribute::select('sku')->where(['product_id' => $data['product_id'], 'size' => $sizeArr[1]])->first();
+
+
+            DB::table('carts')->insert(['product_id' => $data['product_id'] , 'product_name' => $data['product_name'] , 'product_code' => $getSKU->sku, 'product_color' => $data['product_color'], 'price' => $data['price'], 'size' => $sizeArr[1], 'quantity' => $data['quantity'], 'user_email' => $data['user_email'], 'session_id' => $session_id
             ]);
         }
 
@@ -405,8 +409,17 @@ class ProductsController extends Controller
     }
 
     public function updateCartQuantity($id, $quantity){
-        DB::table('carts')->where('id', $id)->increment('quantity', $quantity);
-        return redirect()->back()->with('flash_message_success', 'Product Quantity Has Been Updated');
+        $getCartDetails = DB::table('carts')->where('id', $id)->first();
+        $getAttributeStock = ProductsAttribute::where('sku', $getCartDetails->product_code)->first();
+
+        $updated_quantity = $getCartDetails->quantity+$quantity;
+        if($getAttributeStock->stock >= $updated_quantity){
+            DB::table('carts')->where('id', $id)->increment('quantity', $quantity);
+            return redirect()->back()->with('flash_message_success', 'Product Quantity Has Been Updated');
+        } else {
+            return redirect()->route('cart')->with('flash_message_error', 'Product Quantity is Out of Stock');
+        }
+
 
     }
 
