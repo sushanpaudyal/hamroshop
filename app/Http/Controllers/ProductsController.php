@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Cart;
 use App\Category;
 use App\Product;
 use App\ProductsAttribute;
@@ -388,6 +389,13 @@ class ProductsController extends Controller
             $userCart[$key]->image = $productDetails->image;
         }
         return view ('products.cart', compact('userCart'));
+    }
+
+
+    public function deleteCartProduct($id){
+        $cart = Cart::find($id);
+        $cart->delete();
+        return redirect()->back()->with('flash_message_success', 'Cart Item Has Been Removed');
     }
 
 }
