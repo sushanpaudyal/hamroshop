@@ -374,8 +374,14 @@ class ProductsController extends Controller
 
         $sizeArr = explode("-", $data['size']);
 
-        DB::table('carts')->insert(['product_id' => $data['product_id'] , 'product_name' => $data['product_name'] , 'product_code' => $data['product_code'], 'product_color' => $data['product_color'], 'price' => $data['price'], 'size' => $sizeArr[1], 'quantity' => $data['quantity'], 'user_email' => $data['user_email'], 'session_id' => $session_id
-        ]);
+        $countProducts = DB::table('carts')->where(['product_id' => $data['product_id'], 'product_color' => $data['product_color'], 'size' => $sizeArr[1], 'session_id' => $session_id])->count();
+
+        if($countProducts > 0){
+            return redirect()->route('cart')->with('flash_message_success', 'Product Already Exists in The Cart Table');
+        } else {
+            DB::table('carts')->insert(['product_id' => $data['product_id'] , 'product_name' => $data['product_name'] , 'product_code' => $data['product_code'], 'product_color' => $data['product_color'], 'price' => $data['price'], 'size' => $sizeArr[1], 'quantity' => $data['quantity'], 'user_email' => $data['user_email'], 'session_id' => $session_id
+            ]);
+        }
 
         return redirect()->route('cart')->with('flash_message_error', 'Product Has Been Added to Cart');
     }
