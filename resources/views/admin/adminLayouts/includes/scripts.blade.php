@@ -29,6 +29,8 @@
 <script src="{{asset('public/adminpanel/dist/js/pages/dashboards/dashboard1.js')}}"></script>
 
 <script src="{{asset('public/adminpanel/assets/libs/summernote/dist/summernote-bs4.min.js')}}"></script>
+
+<script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
 <script>
     /************************************/
     //default editor
@@ -72,6 +74,12 @@
     $('.airmode-summer').summernote({
         airMode: true
     });
+</script>
+
+<script>
+    $( function() {
+        $( "#datepicker" ).datepicker({minDate: 0});
+    } );
 </script>
 
 @yield('script')
