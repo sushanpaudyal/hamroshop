@@ -89,7 +89,12 @@
                                         </td>
                                         <td>{{$coupon->created_at}}</td>
                                         <td>
-                                            <a href="{{route('edit.coupon', $coupon->id)}}" class="btn btn-primary">Edit</a>
+                                            <a href="{{route('edit.coupon', $coupon->id)}}" class="btn btn-primary">
+                                                <i class="fa fa-edit"></i>
+                                            </a>
+                                            <a  rel="{{$coupon->id}}" rel1="delete-coupon" href="javascript:" class="btn btn-danger deleteRecord">
+                                                <i class="fa fa-trash"></i>
+                                            </a>
                                         </td>
                                     </tr>
                                     @endforeach
