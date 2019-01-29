@@ -27,4 +27,24 @@ class CouponsController extends Controller
         $coupons = Coupon::latest()->get();
         return view ('admin.coupons.view_coupons', compact('coupons'));
     }
+
+    public function editCoupon(Request $request, $id){
+        $couponDetails = Coupon::findOrFail($id);
+        if($request->isMethod('post')){
+            $data = $request->all();
+            $coupon = Coupon::find($id);
+            $coupon->coupon_code = $data['coupon_code'];
+            $coupon->amount = $data['amount'];
+            $coupon->amount_type = $data['amount_type'];
+            $coupon->expiry_date = $data['expiry_date'];
+            if(empty($data['status'])){
+                $data['status'] = 0;
+            }
+            $coupon->status = $data['status'];
+            $coupon->save();
+            return redirect()->route('view.coupon')->with('flash_message_success', 'Coupons Edit Success');
+        }
+        return view ('admin.coupons.edit_coupon', compact('couponDetails'));
+
+    }
 }

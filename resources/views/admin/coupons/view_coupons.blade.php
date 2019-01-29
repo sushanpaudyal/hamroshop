@@ -89,7 +89,7 @@
                                         </td>
                                         <td>{{$coupon->created_at}}</td>
                                         <td>
-                                            <a href="" class="btn btn-primary">Edit</a>
+                                            <a href="{{route('edit.coupon', $coupon->id)}}" class="btn btn-primary">Edit</a>
                                         </td>
                                     </tr>
                                     @endforeach
