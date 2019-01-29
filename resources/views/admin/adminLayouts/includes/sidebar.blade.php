@@ -104,7 +104,7 @@
                             </a>
                         </li>
                         <li class="sidebar-item">
-                            <a href="" class="sidebar-link">
+                            <a href="{{route('view.coupon')}}" class="sidebar-link">
                                 <i class="icon-Record"></i>
                                 <span class="hide-menu">View</span>
                             </a>
