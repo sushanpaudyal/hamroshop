@@ -360,6 +360,10 @@ class ProductsController extends Controller
 
 
     public function addToCart(Request $request){
+
+        Session::forget('CouponAmount');
+        Session::forget('CouponCode');
+
         $data = $request->all();
 
         if(empty($data['user_email'])){
@@ -403,12 +407,19 @@ class ProductsController extends Controller
 
 
     public function deleteCartProduct($id){
+        Session::forget('CouponAmount');
+        Session::forget('CouponCode');
+
         $cart = Cart::find($id);
         $cart->delete();
         return redirect()->back()->with('flash_message_success', 'Cart Item Has Been Removed');
     }
 
     public function updateCartQuantity($id, $quantity){
+
+        Session::forget('CouponAmount');
+        Session::forget('CouponCode');
+
         $getCartDetails = DB::table('carts')->where('id', $id)->first();
         $getAttributeStock = ProductsAttribute::where('sku', $getCartDetails->product_code)->first();
 
