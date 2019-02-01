@@ -170,6 +170,8 @@
 <script src="{{asset('public/frontpanel/js/easyzoom.js')}}"></script>
 <script src="{{asset('public/frontpanel/js/main.js')}}"></script>
 
+<script src="{{asset('public/frontpanel/js/jquery.passtrength.min.js')}}"></script>
+
 
 <script>
     $(document).ready(function () {

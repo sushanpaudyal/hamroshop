@@ -25,6 +25,8 @@
                                     <img src="{{asset('public/frontpanel/images/home/pricing.png')}}"  class="pricing" alt="" />
                                 </div>
                             </div>
+
+
                             <div class="item">
                                 <div class="col-sm-6">
                                     <h1><span>E</span>-SHOPPER</h1>
