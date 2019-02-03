@@ -32,8 +32,12 @@ Route::get('/cart/update-quantity/{id}/{quantity}', 'ProductsController@updateCa
 
 Route::post('/cart/apply-coupon', 'CouponsController@applyCoupon')->name('apply.coupon');
 
+Route::get('/login-register', 'UsersController@userLoginRegister')->name('login.register');
+Route::post('/user-register', 'UsersController@register')->name('user.register');
 
-Route::match(['get', 'post'], '/login-register', 'UsersController@register')->name('login.register');
+Route::post('/user-login', 'UsersController@login')->name('user.login');
+
+Route::get('/user-logout', 'UsersController@logout')->name('front.logout');
 
 
 //Route::get('/adminLogin', 'AdminController@login')->name('admin.login');

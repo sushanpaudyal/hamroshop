@@ -20,15 +20,11 @@
                 <div class="col-sm-4 col-sm-offset-1">
                     <div class="login-form"><!--login form-->
                         <h2>Login to your account</h2>
+                        <form action="{{route('user.login')}}" id="loginForm" name="loginForm" method="post">
+                            @csrf
+                            <input type="email" placeholder="Email Address" name="email" id="email"/>
+                            <input type="password" placeholder="Password" name="password"  />
 
-
-                        <form action="#">
-                            <input type="text" placeholder="Name" />
-                            <input type="email" placeholder="Email Address" />
-                            <span>
-								<input type="checkbox" class="checkbox">
-								Keep me signed in
-							</span>
                             <button type="submit" class="btn btn-default">Login</button>
                         </form>
                     </div><!--/login form-->
@@ -39,7 +35,7 @@
                 <div class="col-sm-4">
                     <div class="signup-form"><!--sign up form-->
                         <h2>New User Signup!</h2>
-                        <form action="{{route('login.register')}}" id="registerForm" name="registerForm" method="post">
+                        <form action="{{route('user.register')}}" id="registerForm" name="registerForm" method="post">
                             @csrf
                             <input type="text" placeholder="Name" name="name" id="name"/>
                             <input type="email" placeholder="Email Address" name="email" id="email"/>
@@ -78,6 +74,32 @@
                     name: {
                         required : "<span class='text-danger'> Please Enter Name</span>"
                     },
+                    password:{
+                        required: "<span class='text-danger'> Please Enter Password</span>"
+                    },
+                    email:{
+                        required: "<span class='text-danger'> Please Enter Email</span>",
+                        email: "<span class='text-danger'> Please Insert Valid Email Address </span>"
+                    }
+
+                }
+            });
+        });
+
+        $(document).ready(function () {
+            $("#loginForm").validate({
+                rules: {
+
+                    password:{
+                        required : true
+                    },
+                    email:{
+                        required: true,
+                        email: true,
+                    }
+                },
+                messages: {
+
                     password:{
                         required: "<span class='text-danger'> Please Enter Password</span>"
                     },
