@@ -40,6 +40,11 @@ Route::post('/user-login', 'UsersController@login')->name('user.login');
 Route::get('/user-logout', 'UsersController@logout')->name('front.logout');
 
 
+
+Route::group(['middleware' => ['frontLogin']], function(){
+    Route::match(['get', 'post'], '/account', 'UsersController@account')->name('account');
+});
+
 //Route::get('/adminLogin', 'AdminController@login')->name('admin.login');
 Route::match(['get', 'post'], '/adminLogin', 'AdminController@login')->name('admin.login');
 
